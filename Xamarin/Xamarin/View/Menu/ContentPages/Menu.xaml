@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Xamarin.View.Home.ContentPages"
+    x:Class="Xamarin.View.Menu.ContentPages.Menu"
+    x:Name="Menuprincipal">
+    <!--xmlns:pages="clr-namespace:Xamarin.View.Menu.ContentPages"-->
+    <MasterDetailPage.Master>
+        <ContentPage Title="App" Icon="Menu.png">
+            <StackLayout  BackgroundColor="#00bcd4">
+                <StackLayout Padding="2,5,0,5" Orientation="Horizontal">
+                    <Image x:Name="LogoMenu" HeightRequest="80" WidthRequest="80" />
+                    <Label Text="Accordion" TextColor="White" Font="Bold" FontSize="30" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="4,0"/>
+                </StackLayout>
+                <BoxView Color="White" HeightRequest="1"/>
+                <!--Menu Menu1-->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#525252" HeightRequest="34" Margin="-3">
+                    <Image  Source="{Binding MenuPage1.Icono}"  HeightRequest="60" WidthRequest="60"/>
+                    <Label Text="{Binding MenuPage1.Title}"  TextColor="White" VerticalOptions="Center" FontSize="14"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding CMenu_Page1}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding MenuPage1.IsVisible, Mode=TwoWay}" HeightRequest="300">
+                    <ListView x:Name="ListSub" Grid.Row="0" Grid.Column="0" ItemTapped="ListSub_ItemTapped" ItemsSource="{Binding MenuPage1.SubMenu}" SelectedItem="{Binding Source={x:Reference Menuprincipal}, Path=BindingContext.SelectSubMenu}" SeparatorVisibility="None" HasUnevenRows="True" SeparatorColor="Blue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HeightRequest="40" Padding="20,0,0,0" BackgroundColor="White">
+                                        <Image Source="{Binding SubIcono}"  HeightRequest="40" WidthRequest="40"/>
+                                        <Label Text="{Binding SubMenuDetails}" TextColor="Black"  VerticalTextAlignment="Center" HeightRequest="40"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!--Menu Menu2-->
+                <StackLayout Orientation="Horizontal" BackgroundColor="Brown" Margin="-3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    
+                    <Image Grid.Column="0"  Source="{Binding MenuPage2.Icono}"  HeightRequest="60" WidthRequest="60"/>
+                    <Label Grid.Column="1" Text="{Binding MenuPage2.Title}" WidthRequest="100" TextColor="White" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="2" Text="400 Grupos" BackgroundColor="White" TextColor="Brown" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HeightRequest="20" WidthRequest="85" FontSize="12"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding CMenu_Page2}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding MenuPage2.IsVisible, Mode=TwoWay}" HeightRequest="-1">
+                    <ListView x:Name="ListSub2" Grid.Row="0" Grid.Column="0" ItemTapped="ListSub_ItemTapped" ItemsSource="{Binding MenuPage2.SubMenu}" SelectedItem="{Binding Source={x:Reference Menuprincipal}, Path=BindingContext.SelectSubMenu}" SeparatorVisibility="None" HasUnevenRows="True" SeparatorColor="Blue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HeightRequest="40" Padding="20,0,0,0" BackgroundColor="White">
+                                        <Image Source="{Binding SubIcono}"  HeightRequest="40" WidthRequest="40"/>
+                                        <Label Text="{Binding SubMenuDetails}" TextColor="Black"  VerticalTextAlignment="Center" HeightRequest="40"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!--Menu 3-->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#00a9be" Margin="-3">
+                    <Image  Source="{Binding MenuPage3.Icono}" HeightRequest="60" WidthRequest="60"/>
+                    <Label Text="{Binding MenuPage3.Title}" TextColor="White" VerticalOptions="Center" FontSize="18"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding CMenu_Page3}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <!--Menu 4-->
+                <StackLayout Orientation="Horizontal" BackgroundColor="#00a9be" Margin="-3">
+                    <Image  Source="{Binding MenuPage4.Icono}" HeightRequest="60" WidthRequest="60"/>
+                    <Label Text="{Binding MenuPage4.Title}" TextColor="White" VerticalOptions="Center" FontSize="18"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding CMenu_Page4}" />
+                    </StackLayout.GestureRecognizers>
+                    
+                </StackLayout>
+
+                <!--Menu Salir-->
+                <!--<StackLayout Orientation="Horizontal" BackgroundColor="#525252">
+                    <Image  Source="{Binding Menu_Salir.Icono}" HeightRequest="60" WidthRequest="60"/>
+                    <Label Text="{Binding Menu_Salir.Title}" TextColor="White" VerticalOptions="Center" FontSize="18"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding CMenu_Salir}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>-->
+
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage x:Name="Navegate" BarBackgroundColor="#00bcd4">
+            <x:Arguments>
+                <local:Home/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>
